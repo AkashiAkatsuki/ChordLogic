@@ -114,16 +114,13 @@ dominant(Chord):- agency([g], Chord).
 good(X, _):- tonic(X).
 good(X, Y):-
     subdominant(X),
-    dominant(Y),
-    !.
+    dominant(Y).
 good(X, Y):-
     subdominant(X),
-    tonic(Y),
-    !.
+    tonic(Y).
 good(X, Y):-
     dominant(X),
-    tonic(Y),
-    !.
+    tonic(Y).
 
 complete([First, Last]) :-
     good(First, Last),
