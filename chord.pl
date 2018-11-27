@@ -131,6 +131,13 @@ complete([First, Second | Other]):-
     add(Second, Other, NextList),
     complete(NextList).
 
+agency_concat(Chord, Output):-
+    agency(Chord, Agent),
+    atomic_list_concat(Agent, Output).
+agency_list(Chord, List):-
+    findall(Agent, agency_concat(Chord, Agent), Agents),
+    atomic_list_concat(Agents, ", ", List).
+
 add(X, List, [X|List]).
 
 dif(X, Y, Dif):- Dif is Y - X.
