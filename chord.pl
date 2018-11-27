@@ -11,7 +11,7 @@ number(a, 9).
 number(as, 10).
 number(b, 11).
 
-chord([S1, S2, S3], [S1]):-
+chord([S1, S2, S3], [S1, '']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
@@ -19,7 +19,7 @@ chord([S1, S2, S3], [S1]):-
     dif(Num1, Num3, Dif13),
     Dif12 = 4,
     Dif13 = 7.
-chord([S1, S2, S3], [S1, m]):-
+chord([S1, S2, S3], [S1, 'm']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
@@ -27,7 +27,7 @@ chord([S1, S2, S3], [S1, m]):-
     dif(Num1, Num3, Dif13),
     Dif12 = 3,
     Dif13 = 7.
-chord([S1, S2, S3, S4], [S1, 7]):-
+chord([S1, S2, S3, S4], [S1, '7']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
@@ -38,7 +38,7 @@ chord([S1, S2, S3, S4], [S1, 7]):-
     Dif12 = 4,
     Dif13 = 7,
     Dif14 = 10.
-chord([S1, S2, S3, S4], [S1, m7]):-
+chord([S1, S2, S3, S4], [S1, 'm7']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
@@ -49,7 +49,7 @@ chord([S1, S2, S3, S4], [S1, m7]):-
     Dif12 = 3,
     Dif13 = 7,
     Dif14 = 11.
-chord([S1, S2, S3], [S1, sus4]):-
+chord([S1, S2, S3], [S1, 'sus4']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
@@ -57,7 +57,7 @@ chord([S1, S2, S3], [S1, sus4]):-
     dif(Num1, Num3, Dif13),
     Dif12 = 5,
     Dif13 = 7.
-chord([S1, S2, S3], [S1, aug]):-
+chord([S1, S2, S3], [S1, 'aug']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
@@ -65,7 +65,7 @@ chord([S1, S2, S3], [S1, aug]):-
     dif(Num1, Num3, Dif13),
     Dif12 = 4,
     Dif13 = 8.
-chord([S1, S2, S3, S4], [S1, aug7]):-
+chord([S1, S2, S3, S4], [S1, 'aug7']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
@@ -76,7 +76,7 @@ chord([S1, S2, S3, S4], [S1, aug7]):-
     Dif12 = 4,
     Dif13 = 8,
     Dif14 = 10.
-chord([S1, S2, S3], [S1, dim]):-
+chord([S1, S2, S3], [S1, 'dim']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
@@ -84,7 +84,7 @@ chord([S1, S2, S3], [S1, dim]):-
     dif(Num1, Num3, Dif13),
     Dif12 = 3,
     Dif13 = 6.
-chord([S1, S2, S3, S4], [S1, dim7]):-
+chord([S1, S2, S3, S4], [S1, 'dim7']):-
     number(S1, Num1),
     number(S2, Num2),
     number(S3, Num3),
