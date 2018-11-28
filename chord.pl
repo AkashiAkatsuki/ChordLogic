@@ -96,7 +96,16 @@ chord([S1, S2, S3, S4], [S1, 'dim7']):-
     Dif13 = 6,
     Dif14 = 9.
 
+diatonic_scale([Sound, _Option]):- number(Sound, 0).
+diatonic_scale([Sound, _Option]):- number(Sound, 2).
+diatonic_scale([Sound, _Option]):- number(Sound, 4).
+diatonic_scale([Sound, _Option]):- number(Sound, 5).
+diatonic_scale([Sound, _Option]):- number(Sound, 7).
+diatonic_scale([Sound, _Option]):- number(Sound, 9).
+diatonic_scale([Sound, _Option]):- number(Sound, 11).
+
 agency(Chord, Agent):-
+    diatonic_scale(Agent),
     chord(SoundC, Chord),
     chord(SoundA, Agent),
     common(SoundC, SoundA),
