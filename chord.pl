@@ -69,14 +69,14 @@ agency(Chord, Agent):-
     common(SoundC, SoundA),
     Chord \== Agent.
 
-tonic([c]).
-tonic(Chord):- agency([c], Chord).
+tonic([c, '']).
+tonic(Chord):- agency([c, ''], Chord).
 
-subdominant([f]).
-subdominant(Chord):- agency([f], Chord).
+subdominant([f, '']).
+subdominant(Chord):- agency([f, ''], Chord).
 
-dominant([g]).
-dominant(Chord):- agency([g], Chord).
+dominant([g, '']).
+dominant(Chord):- agency([g, ''], Chord).
 
 good(X, _):- tonic(X).
 good(X, Y):-
@@ -91,12 +91,11 @@ good(X, Y):-
 
 complete([First, Last]) :-
     good(First, Last),
-    tonic(Last),
-    !.
+    tonic(Last).
 complete([First, Second | Other]):-
     good(First, Second),
     append([Second], Other, NextList),
-    complete(NextList).
+    complete(NextList), !.
 
 agency_concat(Chord, Output):-
     agency(Chord, Agent),
