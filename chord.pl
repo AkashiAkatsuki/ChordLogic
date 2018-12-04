@@ -1,111 +1,69 @@
-number(c, 0).
-number(cs, 1).
-number(d, 2).
-number(ds, 3).
-number(e, 4).
-number(f, 5).
-number(fs, 6).
-number(g, 7).
-number(gs, 8).
-number(a, 9).
-number(as, 10).
-number(b, 11).
+scale_list([c, cs, d, ds, e, f, fs, g, gs, a, as, b]).
 
 chord([S1, S2, S3], [S1, '']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
     Dif12 = 4,
-    Dif13 = 7.
+    Dif13 = 7,
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13).
 chord([S1, S2, S3], [S1, 'm']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
     Dif12 = 3,
-    Dif13 = 7.
+    Dif13 = 7,
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13).
 chord([S1, S2, S3, S4], [S1, '7']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    number(S4, Num4),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
-    dif(Num1, Num4, Dif14),
     Dif12 = 4,
     Dif13 = 7,
-    Dif14 = 10.
+    Dif14 = 10,
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13),
+    scale_dif(S1, S4, Dif14).
 chord([S1, S2, S3, S4], [S1, 'm7']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    number(S4, Num4),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
-    dif(Num1, Num4, Dif14),
     Dif12 = 3,
     Dif13 = 7,
-    Dif14 = 11.
+    Dif14 = 11,
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13),
+    scale_dif(S1, S4, Dif14).
 chord([S1, S2, S3], [S1, 'sus4']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
     Dif12 = 5,
-    Dif13 = 7.
+    Dif13 = 7,
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13).
 chord([S1, S2, S3], [S1, 'aug']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
-    Dif12 = 4,
-    Dif13 = 8.
-chord([S1, S2, S3, S4], [S1, 'aug7']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    number(S4, Num4),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
-    dif(Num1, Num4, Dif14),
     Dif12 = 4,
     Dif13 = 8,
-    Dif14 = 10.
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13).
+chord([S1, S2, S3, S4], [S1, 'aug7']):-
+    Dif12 = 4,
+    Dif13 = 8,
+    Dif14 = 10,
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13),
+    scale_dif(S1, S4, Dif14).
 chord([S1, S2, S3], [S1, 'dim']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
-    Dif12 = 3,
-    Dif13 = 6.
-chord([S1, S2, S3, S4], [S1, 'dim7']):-
-    number(S1, Num1),
-    number(S2, Num2),
-    number(S3, Num3),
-    number(S4, Num4),
-    dif(Num1, Num2, Dif12),
-    dif(Num1, Num3, Dif13),
-    dif(Num1, Num4, Dif14),
     Dif12 = 3,
     Dif13 = 6,
-    Dif14 = 9.
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13).
+chord([S1, S2, S3, S4], [S1, 'dim7']):-
+    Dif12 = 3,
+    Dif13 = 6,
+    Dif14 = 9,
+    scale_dif(S1, S2, Dif12),
+    scale_dif(S1, S3, Dif13),
+    scale_dif(S1, S4, Dif14).
 
-diatonic_scale([Sound, _Option]):- number(Sound, 0).
-diatonic_scale([Sound, _Option]):- number(Sound, 2).
-diatonic_scale([Sound, _Option]):- number(Sound, 4).
-diatonic_scale([Sound, _Option]):- number(Sound, 5).
-diatonic_scale([Sound, _Option]):- number(Sound, 7).
-diatonic_scale([Sound, _Option]):- number(Sound, 9).
-diatonic_scale([Sound, _Option]):- number(Sound, 11).
+diatonic([Sound, _Option]):- scale_list(ScaleList), nth0(0, ScaleList, Sound).
+diatonic([Sound, _Option]):- scale_list(ScaleList), nth0(2, ScaleList, Sound).
+diatonic([Sound, _Option]):- scale_list(ScaleList), nth0(4, ScaleList, Sound).
+diatonic([Sound, _Option]):- scale_list(ScaleList), nth0(5, ScaleList, Sound).
+diatonic([Sound, _Option]):- scale_list(ScaleList), nth0(7, ScaleList, Sound).
+diatonic([Sound, _Option]):- scale_list(ScaleList), nth0(9, ScaleList, Sound).
+diatonic([Sound, _Option]):- scale_list(ScaleList), nth0(11, ScaleList, Sound).
 
 agency(Chord, Agent):-
-    diatonic_scale(Agent),
+    diatonic(Agent),
     chord(SoundC, Chord),
     chord(SoundA, Agent),
     common(SoundC, SoundA),
@@ -149,8 +107,15 @@ agency_list(Chord, List):-
 
 add(X, List, [X|List]).
 
-dif(X, Y, Dif):- Dif is Y - X.
-dif(X, Y, Dif):- Dif is Y + 12 - X.
+scale_dif(X, Y, Dif):-
+    scale_list(Scale),
+    append(Scale, Scale, ScaleList),
+    count_dif(X, Y, ScaleList, Dif).
+
+count_dif(Y, [Y | _], 0).
+count_dif(Y, [_ | L], Num) :- count_dif(Y, L, Num2), Num is Num2 + 1.
+count_dif(X, Y, [X | L], Num):- count_dif(Y, L, Num2), Num is Num2 + 1, !.
+count_dif(X, Y, [_ | L], Num) :- count_dif(X, Y, L, Num), !.
 
 common([X, X1|_], [X, X1|_]):- !.
 common([_|X], Y):- common(X, Y), !.
