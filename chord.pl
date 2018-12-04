@@ -95,7 +95,7 @@ complete([First, Last]) :-
     !.
 complete([First, Second | Other]):-
     good(First, Second),
-    add(Second, Other, NextList),
+    append([Second], Other, NextList),
     complete(NextList).
 
 agency_concat(Chord, Output):-
@@ -104,8 +104,6 @@ agency_concat(Chord, Output):-
 agency_list(Chord, List):-
     findall(Agent, agency_concat(Chord, Agent), Agents),
     atomic_list_concat(Agents, ", ", List).
-
-add(X, List, [X|List]).
 
 scale_dif(X, Y, Dif):-
     scale_list(Scale),
